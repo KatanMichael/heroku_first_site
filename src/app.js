@@ -12,6 +12,17 @@ const publicDirectoryPath = path.join(__dirname, '../public')
 const viewsPath = path.join(__dirname, '../templates/views')
 const partialsPath = path.join(__dirname, '../templates/partials')
 
+const firebase = require('firebase');    
+const admin = require('firebase-admin');
+
+const functions = require('firebase-functions');
+
+admin.initializeApp(functions.config().firebase);
+
+let db = admin.firestore();
+
+
+
 // Setup handlebars engine and views location
 app.set('view engine', 'hbs')
 app.set('views', viewsPath)
@@ -19,6 +30,22 @@ hbs.registerPartials(partialsPath)
 
 // Setup static directory to serve
 app.use(express.static(publicDirectoryPath))
+
+
+
+app.get('/addUser', (req, res) =>
+{
+    db.collection('users').add(
+        {
+            'firstName' : 'testFirst',
+            'lastName': 'testLast'
+
+
+        }
+    )
+
+
+});
 
 app.get('', (req, res) => {
     res.render('index', {
@@ -74,6 +101,7 @@ app.get('/products', (req, res) => {
             error: 'You must provide a search term'
         })
     }
+
 
     console.log(req.query.search)
     res.send({

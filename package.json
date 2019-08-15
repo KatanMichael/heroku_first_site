@@ -1,7 +1,6 @@
 {
   "name": "web-server",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node src/app.js"
@@ -11,7 +10,19 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1",
+    "firebase": "^6.3.5",
+    "firebase-admin": "^8.3.0",
     "hbs": "^4.0.1",
     "request": "^2.88.0"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/KatanMichael/heroku_first_site.git"
+  },
+  "bugs": {
+    "url": "https://github.com/KatanMichael/heroku_first_site/issues"
+  },
+  "homepage": "https://github.com/KatanMichael/heroku_first_site#readme",
+  "description": ""
 }
