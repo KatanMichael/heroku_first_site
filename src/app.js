@@ -15,13 +15,9 @@ const partialsPath = path.join(__dirname, '../templates/partials')
 const firebase = require('firebase');    
 const admin = require('firebase-admin');
 
-const functions = require('firebase-functions');
-
-admin.initializeApp(functions.config().firebase);
+admin.initializeApp();
 
 let db = admin.firestore();
-
-
 
 // Setup handlebars engine and views location
 app.set('view engine', 'hbs')
@@ -39,8 +35,6 @@ app.get('/addUser', (req, res) =>
         {
             'firstName' : 'testFirst',
             'lastName': 'testLast'
-
-
         }
     )
 
